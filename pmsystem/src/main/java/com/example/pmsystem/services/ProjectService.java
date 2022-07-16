@@ -1,6 +1,7 @@
 package com.example.pmsystem.services;
 
 import com.example.pmsystem.domain.Project;
+import com.example.pmsystem.exceptions.ProjectIdException;
 import com.example.pmsystem.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,13 @@ public class ProjectService {
     private ProjectRepository projectRepository;
 
     public Project saveOrUpdateProject(Project project){
+        try{
+            project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+            return projectRepository.save(project);
+        }catch(Exception e){
+            throw new ProjectIdException("Project ID '" + project.getProjectIdentifier().toUpperCase()
+                    + "' already exists!");
+        }
 
-        return projectRepository.save(project);
     }
 }
