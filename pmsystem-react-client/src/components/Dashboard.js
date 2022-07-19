@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ProjectItem from './Project/ProjectItem';
+import CreateProject from './Project/CreateProject';
 
 //rcc: Creates class based components. 
 //Class based components maps our state to our component property.
@@ -13,9 +14,7 @@ export class Dashboard extends Component {
                 <div className="col-md-12">
                     <h1 className="display-4 text-center">Projects</h1>
                     <br />
-                    <a href="ProjectForm.html" class="btn btn-lg btn-info">
-                        Create a Project
-                    </a>
+                    <CreateProject/>
                     <br />
                     <hr />
                     <ProjectItem/>

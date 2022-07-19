@@ -6,14 +6,19 @@ img {
   background-color: #456565;
 }
 
-.btn-info {
+a.btn-info {
   color: #fff;
   background-color: #3e7e80;
   border-color: #3e7e80;
 }
 
+a.btn-info:hover{
+  background-color: #3e7e80;
+  border-color: #3e7e80;
+}
+
 .fa.fa-edit {
-  color: #18a2b9;
+  color: #07798d;
 }
 
 .list-group-item.delete:hover {
@@ -23,12 +28,12 @@ img {
 
 .list-group-item.update:hover {
   cursor: -webkit-grab;
-  background-color: gainsboro;
+  background-color: #cdecee;
 }
 
 .list-group-item.board:hover {
   cursor: -webkit-grab;
-  background-color: gainsboro;
+  background-color: #ADD8E6;
 }
 
 .fa.fa-minus-circle {
@@ -69,4 +74,9 @@ img {
 
 .form-control::placeholder {
   color: #bbb !important;
+}
+
+input[type="submit"]{
+  background-color: #3e7e80;
+  color: #fff;
 }
