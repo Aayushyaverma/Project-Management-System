@@ -4,12 +4,10 @@ import Header from './components/Layout/Header';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import AddProject from './components/Project/AddProject';
-import {Provider} from "react-redux"
-import store from './store';
+import {Provider} from "react-redux";
 
 function App() {
   return (
-    <Provider store={store}>
       <Router>
         <div className="App">
           <Header />
@@ -19,7 +17,6 @@ function App() {
           </Routes>
         </div>
       </Router>
-    </Provider>
   );
 }
 
