@@ -12,7 +12,7 @@ a.btn-info {
   border-color: #3e7e80;
 }
 
-a.btn-info:hover{
+a.btn-info:hover {
   background-color: #3e7e80;
   border-color: #3e7e80;
 }
@@ -76,7 +76,8 @@ a.btn-info:hover{
   color: #bbb !important;
 }
 
-input[type="submit"]{
-  background-color: #3e7e80;
+input[type="submit"] {
   color: #fff;
+  background-color: #3e7e80;
+  border-color: #3e7e80;
 }

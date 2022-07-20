@@ -1,108 +1,96 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import ProjectServices from '../../services/ProjectServices'
 
-export class AddProject extends Component {
+//rafce
+//useHistory Hook: Gives access to the history instance that you may use to navigate.
+const AddProject = () => {
 
-    constructor(){
-        super()
+    const [projectName, setProjectName] = useState('')
+    const [projectIdentifier, setProjectIdentifier] = useState('')
+    const [description, setDescription] = useState('')
+    const [start_date, setStartDate] = useState('')
+    const [end_date, setEndDate] = useState('')
+    const navigate = useNavigate();
 
-        this.state = {
-            "projectName": "",
-            "projectIdentifier": "",
-            "description": "",
-            "start_date": "",
-            "end_date": ""
-        };
-
-        this.OnChange = this.OnChange.bind(this)
-        this.onSubmit = this.onSubmit.bind(this)
-    }
-
-    OnChange(e){
-        this.setState({[e.target.name]: e.target.value})
-    }
-
-    onSubmit(e){
-        //Submit button
+    const saveProject = (e) => {
         e.preventDefault();
 
-        const newProject = {
-            "projectName": this.state.projectName,
-            "projectIdentifier": this.state.projectIdentifier,
-            "description": this.state.description,
-            "start_date": this.state.start_date,
-            "end_date": this.state.end_date
-        }
+        const project = { projectName, projectIdentifier, description, start_date, end_date }
 
-        console.log(newProject);
+        ProjectServices.createProject(project).then((response) => {
+            console.log(response.data)
+            navigate('/dashboard');
+        }).catch(console(error => {
+            console.log(error)
+        }))
     }
-  render() {
     return (
-    //Controlled component: Form's data is handled by the component's state such as onClick, onChange, etc.
-    
-    <div className="project">
-        <div className="container">
-            <div className="row">
-                <div className="col-md-8 m-auto">
-                    <h5 className="display-4 text-center">Create Project</h5>
-                    <hr />
-                    <form onSubmit={this.onSubmit}>
-                        <div className="form-group">
-                            <input type="text" 
-                            className="form-control form-control-lg " 
-                            placeholder="Project Name" 
-                            name='projectName'
-                            defaultValue={this.state.projectName}
-                            onChange = {this.OnChange}
-                            />
-                        </div>
-                        <br/>
-                        <div className="form-group">
-                            <input type="text" 
-                            className="form-control form-control-lg" 
-                            placeholder="Unique Project ID" 
-                            name='projectIdentifier'
-                            defaultValue={this.state.projectIdentifier}
-                            onChange = {this.OnChange}
-                            />
-                        </div>
-                        <br/>
-                        <div className="form-group">
-                            <textarea className="form-control form-control-lg" 
-                            placeholder="Project Description"
-                            name='description'
-                            defaultValue={this.state.description}
-                            onChange = {this.OnChange}
-                            />
-                        </div>
-                        <br/>
-                        <h6>Start Date</h6>
-                        <div className="form-group">
-                            <input type="date" 
-                            className="form-control form-control-lg" 
-                            name="start_date" 
-                            defaultValue={this.state.start_date}
-                            onChange = {this.OnChange}
-                            />
-                        </div>
-                        <br/>
-                        <h6>Estimated End Date</h6>
-                        <div className="form-group">
-                            <input type="date" 
-                            className="form-control form-control-lg" 
-                            name="end_date" 
-                            defaultValue={this.state.end_date}
-                            onChange = {this.OnChange}
-                            />
-                        </div>
+        <div>
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-8 m-auto">
+                        <h5 className="display-4 text-center">Create Project</h5>
+                        <hr />
+                        <form>
+                            <div className="form-group">
+                                <input type="text"
+                                    className="form-control form-control-lg "
+                                    placeholder="Project Name"
+                                    name='projectName'
+                                    value={projectName}
+                                    onChange={(e) => setProjectName(e.target.value)}
+                                />
+                            </div>
+                            <br />
+                            <div className="form-group">
+                                <input type="text"
+                                    className="form-control form-control-lg"
+                                    placeholder="Unique Project ID"
+                                    name='projectIdentifier'
+                                    value={projectIdentifier}
+                                    onChange={(e) => setProjectIdentifier(e.target.value)}
+                                />
+                            </div>
+                            <br />
+                            <div className="form-group">
+                                <textarea className="form-control form-control-lg"
+                                    placeholder="Project Description"
+                                    name='description'
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                />
+                            </div>
+                            <br />
+                            <h6>Start Date</h6>
+                            <div className="form-group">
+                                <input type="date"
+                                    className="form-control form-control-lg"
+                                    name="start_date"
+                                    value={start_date}
+                                    onChange={(e) => setStartDate(e.target.value)}
+                                />
+                            </div>
+                            <br />
+                            <h6>Estimated End Date</h6>
+                            <div className="form-group">
+                                <input type="date"
+                                    className="form-control form-control-lg"
+                                    name="end_date"
+                                    value={end_date}
+                                    onChange={(e) => setEndDate(e.target.value)}
+                                />
+                            </div>
 
-                        <input type="submit" className="btn btn-lg btn-block mt-4" />
-                    </form>
+                            <button style= {{backgroundColor: "#3e7e80"}}className='btn btn-success btn-lg mt-3' onClick={(e) => saveProject(e)}>Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     )
-  }
 }
 
-export default AddProject;
+export default AddProject
+
+
