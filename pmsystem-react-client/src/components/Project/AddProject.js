@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ProjectServices from '../../services/ProjectServices'
 
-//rafce
+export const GET_ERRORS = "GET_ERRORS";
+//rafce: stateless component
 //useHistory Hook: Gives access to the history instance that you may use to navigate.
+
 const AddProject = () => {
 
     const [projectName, setProjectName] = useState('')
@@ -18,13 +20,15 @@ const AddProject = () => {
 
         const project = { projectName, projectIdentifier, description, start_date, end_date }
 
-        ProjectServices.createProject(project).then((response) => {
-            console.log(response.data)
-            navigate('/dashboard');
-        }).catch(console(error => {
-            console.log(error)
-        }))
+        ProjectServices.createProject(project)
+            .then((response) => {
+                console.log(response.data)
+                navigate('/dashboard');
+            }).catch(error => {
+                return error.response;
+            })
     }
+
     return (
         <div>
             <div className="container">
@@ -34,7 +38,7 @@ const AddProject = () => {
                         <hr />
                         <form>
                             <div className="form-group">
-                                <input type="text"
+                                <input type="text"  
                                     className="form-control form-control-lg "
                                     placeholder="Project Name"
                                     name='projectName'
@@ -44,7 +48,7 @@ const AddProject = () => {
                             </div>
                             <br />
                             <div className="form-group">
-                                <input type="text"
+                                <input type="text" 
                                     className="form-control form-control-lg"
                                     placeholder="Unique Project ID"
                                     name='projectIdentifier'
@@ -54,7 +58,8 @@ const AddProject = () => {
                             </div>
                             <br />
                             <div className="form-group">
-                                <textarea className="form-control form-control-lg"
+                                <textarea
+                                    className="form-control form-control-lg"
                                     placeholder="Project Description"
                                     name='description'
                                     value={description}
@@ -82,7 +87,7 @@ const AddProject = () => {
                                 />
                             </div>
 
-                            <button style= {{backgroundColor: "#3e7e80"}}className='btn btn-success btn-lg mt-3' onClick={(e) => saveProject(e)}>Submit</button>
+                            <button style={{ backgroundColor: "#3e7e80" }} className='btn btn-success btn-lg mt-3' onClick={(e) => saveProject(e)}>Submit</button>
                         </form>
                     </div>
                 </div>
