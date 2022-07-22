@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ProjectServices from '../../services/ProjectServices'
+import {PropTypes} from 'prop-types'
 
-export const GET_ERRORS = "GET_ERRORS";
+
 //rafce: stateless component
 //useHistory Hook: Gives access to the history instance that you may use to navigate.
 
@@ -25,12 +26,13 @@ const AddProject = () => {
                 console.log(response.data)
                 navigate('/dashboard');
             }).catch(error => {
-                return error.response;
+                console.log(error.response)
             })
     }
 
     return (
         <div>
+            <div className='project'>
             <div className="container">
                 <div className="row">
                     <div className="col-md-8 m-auto">
@@ -93,9 +95,9 @@ const AddProject = () => {
                 </div>
             </div>
         </div>
+        </div>
     )
 }
 
-export default AddProject
-
+export default (AddProject);
 
