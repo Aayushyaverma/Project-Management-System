@@ -40,12 +40,11 @@ const AddProject = () => {
             }).catch(error => {
                 //console.log(error.response)
                 const errData = error.response.data
-                setErrors({
+    setErrors({
                     ...error,
                     projectName: errData.projectName,
                     projectIdentifier: errData.projectIdentifier,
                     description: errData.description
-                })
             })
     }
 
@@ -62,7 +61,9 @@ const AddProject = () => {
                                     <input type="text"
                                         className={classNames("form-control form-control-lg", {
                                             "is-invalid": errors.projectName
+
                                         })}
+
                                         placeholder="Project Name"
                                         name='projectName'
                                         value={projectName}
@@ -72,6 +73,7 @@ const AddProject = () => {
                                         <div className='invalid-feedback'>{errors.projectName}</div>
                                     )}
                                 </div>
+
                                 <br />
 
                                 <div className="form-group">
@@ -88,6 +90,7 @@ const AddProject = () => {
                                         <div className='invalid-feedback'>{errors.projectIdentifier}</div>
                                     )}
                                 </div>
+
                                 <br />
 
                                 <div className="form-group">
@@ -104,8 +107,9 @@ const AddProject = () => {
                                         <div className='invalid-feedback'>{errors.description}</div>
                                     )}
                                 </div>
-                                <br />
 
+                                <br />
+                                
                                 <h6>Start Date</h6>
                                 <div className="form-group">
                                     <input type="date"
