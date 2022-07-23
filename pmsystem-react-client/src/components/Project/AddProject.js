@@ -125,6 +125,7 @@ const AddProject = () => {
                                         onChange={(e) => setEndDate(e.target.value)}
                                     />
                                 </div>
+                                
 
                                 <button style={{ backgroundColor: "#3e7e80" }} className='btn btn-success btn-lg mt-3' onClick={(e) => saveProject(e)}>Submit</button>
                             </form>
