@@ -1,7 +1,9 @@
 package com.example.pmsystem.services;
 
+import com.example.pmsystem.domain.Backlog;
 import com.example.pmsystem.domain.Project;
 import com.example.pmsystem.exceptions.ProjectIdException;
+import com.example.pmsystem.repository.BacklogRepository;
 import com.example.pmsystem.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +14,25 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
+    @Autowired
+    private BacklogRepository backlogRepository;
+
     public Project saveOrUpdateProject(Project project){
         try{
             project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+
+            if(project.getId() == null){
+                Backlog backlog = new Backlog();
+                project.setBacklog(backlog);
+                backlog.setProject(project);
+                backlog.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+            }
+
+            if(project.getId() != null) {
+                project.setBacklog(backlogRepository
+                        .findByProjectIdentifier(project.getProjectIdentifier().toUpperCase()));
+            }
+
             return projectRepository.save(project);
         }catch(Exception e){
             throw new ProjectIdException("Project ID '" + project.getProjectIdentifier().toUpperCase()
