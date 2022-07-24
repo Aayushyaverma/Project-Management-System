@@ -11,13 +11,17 @@ export const getProjects = () => async dispatch => {
 }
 
 //GET: Project by ID
-export const getProject = (id) => async dispatch => {
-    const res = await axios.get(`http://localhost:8080/api/project/${id}`)
-    dispatch({
+export const getProject = (id, history) => async dispatch => {
+    try {
+      const res = await axios.get(`/api/project/${id}`);
+      dispatch({
         type: GET_PROJECT,
         payload: res.data
-    });
-}
+      });
+    } catch (error) {
+      history.push("/dashboard");
+    }
+  };
 
 //DELETE: Delete project by ID
 export const deleteProject = id => async dispatch => {
