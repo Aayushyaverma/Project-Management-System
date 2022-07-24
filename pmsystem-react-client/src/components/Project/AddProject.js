@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ProjectServices from '../../services/ProjectServices'
 import { PropTypes } from 'prop-types'
@@ -24,7 +24,6 @@ const AddProject = () => {
 
 
     const [errors, setErrors] = useState(initialStateErrors);
-
 
     const navigate = useNavigate();
 
