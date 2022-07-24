@@ -1,6 +1,7 @@
 package com.example.pmsystem.web;
 
 import com.example.pmsystem.domain.Project;
+import com.example.pmsystem.repository.ProjectRepository;
 import com.example.pmsystem.services.MapValidationErrorService;
 import com.example.pmsystem.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,4 +55,18 @@ public class ProjectController {
         projectService.deleteProjectByIdentifier(projectId);
         return new ResponseEntity<String>("Project with ID: '" + projectId + "' was deleted!", HttpStatus.OK);
     }
+
+    @PutMapping("/{projectId}")
+    public ResponseEntity<?> updateProject(@PathVariable String projectId, @RequestBody Project project, BindingResult result){
+
+        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+        if(errorMap!= null){
+            return errorMap;
+        }
+        
+        Project p = projectService.updateProject(projectId, project);
+
+        return new ResponseEntity<Project>(p, HttpStatus.OK);
+    }
+
 }
