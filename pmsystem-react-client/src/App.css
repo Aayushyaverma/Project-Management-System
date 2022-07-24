@@ -13,7 +13,7 @@ a.btn-info {
 }
 
 a.btn-info:hover {
-  background-color: #3e7e80;
+  background-color: #456565;
   border-color: #3e7e80;
 }
 
@@ -79,5 +79,29 @@ a.btn-info:hover {
 input[type="submit"] {
   color: #fff;
   background-color: #3e7e80;
+  border-color: #3e7e80;
+}
+
+a.btn-primary{
+  color: #fff;
+  background-color: #3e7e80;
+  border-color: #3e7e80;
+}
+
+a.btn-primary:hover {
+  color: #fff;
+  background-color: #456565;
+  border-color: #3e7e80;
+}
+
+.btn.btn-light {
+  color: #fff;
+  background-color: #3e7e80;
+  border-color: #3e7e80;
+}
+
+.btn.btn-light:hover {
+  color: #fff;
+  background-color: #456565;
   border-color: #3e7e80;
 }
