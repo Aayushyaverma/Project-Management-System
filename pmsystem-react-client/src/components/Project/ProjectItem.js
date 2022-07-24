@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert';
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import { deleteProject } from '../../actions/projectActions';
@@ -7,7 +8,9 @@ import { deleteProject } from '../../actions/projectActions';
 export class ProjectItem extends Component {
 
     onDeleteClick = id => {
+        
         this.props.deleteProject(id);
+        
     }
 
     render() {
@@ -25,7 +28,7 @@ export class ProjectItem extends Component {
                         </div>
                         <div className="col-md-4 d-none d-lg-block">
                             <ul className="list-group">
-                                <a href="#">
+                                <a href={`/projectBoard/${project.projectIdentifier}`}>
                                     <li className="list-group-item board">
                                         <i className="fa fa-flag-checkered pr-1">  Project Board </i>
                                     </li>
