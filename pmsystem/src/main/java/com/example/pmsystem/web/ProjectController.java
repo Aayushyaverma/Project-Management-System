@@ -56,17 +56,17 @@ public class ProjectController {
         return new ResponseEntity<String>("Project with ID: '" + projectId + "' was deleted!", HttpStatus.OK);
     }
 
-    @PutMapping("/{projectId}")
-    public ResponseEntity<?> updateProject(@PathVariable String projectId, @RequestBody Project project, BindingResult result){
-
-        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
-        if(errorMap!= null){
-            return errorMap;
-        }
-        
-        Project p = projectService.updateProject(projectId, project);
-
-        return new ResponseEntity<Project>(p, HttpStatus.OK);
-    }
+//    @PatchMapping("/{projectId}")
+//    public ResponseEntity<?> updateProject(@PathVariable String projectId, @RequestBody Project project, BindingResult result){
+//
+//        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+//        if(errorMap!= null){
+//            return errorMap;
+//        }
+//
+//        Project p = projectService.updateProject(projectId, project);
+//
+//        return new ResponseEntity<Project>(p, HttpStatus.OK);
+//    }
 
 }
