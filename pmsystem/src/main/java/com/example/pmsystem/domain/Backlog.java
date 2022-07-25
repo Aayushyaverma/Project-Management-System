@@ -1,13 +1,12 @@
 package com.example.pmsystem.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Backlog {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,15 +14,24 @@ public class Backlog {
     private Integer PTSequence = 0;
     private String projectIdentifier;
 
-    //OneToOne with project
+    //OneToOne with Project
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id", nullable = false)
-    @JsonIgnore
     private Project project;
 
-    //OneToMany with project tasks
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    //OneToMany with ProjectTasks
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "backlog", orphanRemoval = true)
     private List<ProjectTask> projectTasks = new ArrayList<>();
+    //Cascade REFRESH
+    //ORPHAN REMOVAL
 
     public Backlog() {
     }
@@ -52,14 +60,6 @@ public class Backlog {
         this.projectIdentifier = projectIdentifier;
     }
 
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
     public List<ProjectTask> getProjectTasks() {
         return projectTasks;
     }
@@ -68,4 +68,3 @@ public class Backlog {
         this.projectTasks = projectTasks;
     }
 }
-
