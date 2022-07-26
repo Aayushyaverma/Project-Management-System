@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/project")
@@ -26,6 +27,9 @@ public class ProjectController {
 
     @Autowired
     private MapValidationErrorService mapValidationErrorService;
+
+    @Autowired
+    private ProjectRepository projectRepository;
 
     @PostMapping("")
     public ResponseEntity<?> createNewProject(@Valid @RequestBody Project project, BindingResult result){
@@ -56,17 +60,21 @@ public class ProjectController {
         return new ResponseEntity<String>("Project with ID: '" + projectId + "' was deleted!", HttpStatus.OK);
     }
 
-    @PutMapping("/{projectId}")
-    public ResponseEntity<?> updateProject(@PathVariable String projectId, @RequestBody Project project, BindingResult result){
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateProject(@PathVariable Long id, @RequestBody Project project, BindingResult result) {
 
-        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
-        if(errorMap!= null){
-            return errorMap;
+        Optional<Project> p = projectRepository.findById(id);
+        if (p.isPresent()) {
+            Project project1 = p.get();
+            project1.setProjectName(project.getProjectName());
+            project1.setDescription(project.getDescription());
+            project1.setStart_date(project.getStart_date());
+            project1.setEnd_date(project.getEnd_date());
+            projectRepository.save(project1);
+            return ResponseEntity.ok(p);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        
-        Project p = projectService.updateProject(projectId, project);
-
-        return new ResponseEntity<Project>(p, HttpStatus.OK);
     }
 
 }
