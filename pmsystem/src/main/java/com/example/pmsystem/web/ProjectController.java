@@ -62,6 +62,7 @@ public class ProjectController {
         return new ResponseEntity<String>("Project with ID: '" + projectId + "' was deleted!", HttpStatus.OK);
     }
 
+
     @PutMapping("/{id}")
     public ResponseEntity<?> updateProject(@PathVariable Long id, @RequestBody Project project, BindingResult result) {
 
@@ -78,5 +79,6 @@ public class ProjectController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
 
 }

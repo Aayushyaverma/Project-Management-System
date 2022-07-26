@@ -33,33 +33,36 @@ public class ProjectService {
 
             project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
 
-            if(project.getId() == null){
+            if(project.getId()==null){
                 Backlog backlog = new Backlog();
                 project.setBacklog(backlog);
                 backlog.setProject(project);
                 backlog.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
             }
 
-            if(project.getId() != null) {
-                project.setBacklog(backlogRepository
-                        .findByProjectIdentifier(project.getProjectIdentifier().toUpperCase()));
+            if(project.getId()!=null){
+                project.setBacklog(backlogRepository.findByProjectIdentifier(project.getProjectIdentifier().toUpperCase()));
             }
 
             return projectRepository.save(project);
-        }catch(Exception e){
-            throw new ProjectIdException("Project ID '" + project.getProjectIdentifier().toUpperCase()
-                    + "' already exists!");
+
+        }catch (Exception e){
+            throw new ProjectIdException("Project ID '"+project.getProjectIdentifier().toUpperCase()+"' already exists");
         }
+
     }
 
     public Project findProjectByIdentifier(String projectId, String username){
         Project project = projectRepository.findByprojectIdentifier(projectId.toUpperCase());
+
         if(project == null){
-            throw new ProjectIdException("Project does not exist!");
+            throw new ProjectIdException("Project ID '"+projectId+"' does not exist");
+
         }
         if(!project.getProjectLeader().equals(username)){
             throw new ProjectNotFoundException("Project Not Found In Your Account");
         }
+
         return project;
     }
 
@@ -71,5 +74,6 @@ public class ProjectService {
     public void deleteProjectByIdentifier(String projectId, String username){
 
         projectRepository.delete(findProjectByIdentifier(projectId, username));
+
     }
 }
