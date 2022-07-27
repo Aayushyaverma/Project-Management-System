@@ -1,9 +1,10 @@
 import axios from "axios";
+import authHeader from "./authHeader";
 
 class ProjectService {
 
     createProject(project) {
-        return axios.post("http://localhost:8080/api/project",project)
+        return axios.post("http://localhost:8080/api/project",project, {headers: authHeader()})
     }
 
     updateProject(id){

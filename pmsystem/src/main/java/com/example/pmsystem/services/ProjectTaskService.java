@@ -77,7 +77,7 @@ public class ProjectTaskService {
         if (!projectTask.getProjectIdentifier().equals(backlog_id)) {
                 throw new ProjectNotFoundException("Project Task '" + pt_id + "' does not exist in project: '" + backlog_id);
             }
-        
+
         return projectTask;
     }
 

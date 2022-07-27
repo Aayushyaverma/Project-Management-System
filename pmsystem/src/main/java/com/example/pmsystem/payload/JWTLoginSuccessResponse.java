@@ -2,11 +2,11 @@ package com.example.pmsystem.payload;
 
 public class JWTLoginSuccessResponse {
     private boolean success;
-    private String token;
+    private String accessToken;
 
-    public JWTLoginSuccessResponse(boolean success, String token) {
+    public JWTLoginSuccessResponse(boolean success, String accessToken) {
         this.success = success;
-        this.token = token;
+        this.accessToken = accessToken;
     }
 
     public boolean isSuccess() {
@@ -17,19 +17,19 @@ public class JWTLoginSuccessResponse {
         this.success = success;
     }
 
-    public String getToken() {
-        return token;
+    public String getAccessToken() {
+        return accessToken;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     @Override
     public String toString() {
         return "JWTLoginSuccessResponse{" +
                 "success=" + success +
-                ", token='" + token + '\'' +
+                ", token='" + accessToken + '\'' +
                 '}';
     }
 }

@@ -10,24 +10,19 @@ import UpdateProject from './components/Project/UpdateProject';
 import ProjectBoard from './components/ProjectBoard/ProjectBoard';
 import AddProjectTask from './components/ProjectBoard/ProjectTasks/AddProjectTask';
 import Landing from './components/Layout/Landing';
+import Register from './components/UserManagement/Register';
+import Login from './components/UserManagement/Login';
 function App() {
   return (
     <Provider store={store}>
       <Router>
         <div className="App">
           <Header />
-          {
-            //Public Routes
-          }
 
           <Routes>
             <Route path="/" element={<Landing />} />
-          </Routes>
-
-          {
-            //Private Routes
-          }
-          <Routes>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/addProject" element={<AddProject />} />
             <Route path="/updateProject/:id" element={<UpdateProject />} />
