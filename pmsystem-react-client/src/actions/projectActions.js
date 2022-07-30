@@ -15,7 +15,7 @@ export const getProjects = () => async dispatch => {
 //GET: Project by ID
 export const getProject = (id, history) => async dispatch => {
   try {
-    const res = await axios.get(`/api/project/${id}`);
+    const res = await axios.get(`/api/project/${id}`, {headers: authHeader()});
     dispatch({
       type: GET_PROJECT,
       payload: res.data
@@ -27,7 +27,7 @@ export const getProject = (id, history) => async dispatch => {
 
 //DELETE: Delete project by ID
 export const deleteProject = id => async dispatch => {
-  await axios.delete(`http://localhost:8080/api/project/${id}`)
+  await axios.delete(`http://localhost:8080/api/project/${id}`, {headers: authHeader()})
   dispatch({
     type: DELETE_PROJECT,
     payload: id
