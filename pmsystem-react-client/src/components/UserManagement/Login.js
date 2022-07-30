@@ -27,6 +27,7 @@ function Login() {
 
                 }
                 navigate("/dashboard");
+                window.location.reload();
 
                 return response.data;
 

@@ -8,7 +8,7 @@ class ProjectService {
     }
 
     updateProject(id){
-        return axios.put(`http://localhost:8080/api/project/${id}`)
+        return axios.put(`http://localhost:8080/api/project/${id}`, {headers: authHeader()})
     }
 }
 

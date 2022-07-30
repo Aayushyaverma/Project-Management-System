@@ -12,27 +12,31 @@ import AddProjectTask from './components/ProjectBoard/ProjectTasks/AddProjectTas
 import Landing from './components/Layout/Landing';
 import Register from './components/UserManagement/Register';
 import Login from './components/UserManagement/Login';
-function App() {
-  return (
-    <Provider store={store}>
-      <Router>
-        <div className="App">
-          <Header />
 
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/addProject" element={<AddProject />} />
-            <Route path="/updateProject/:id" element={<UpdateProject />} />
-            <Route path="/projectBoard/:id" element={<ProjectBoard />} />
-            <Route path="/addProjectTask/:id" element={<AddProjectTask />} />
-          </Routes>
-        </div>
-      </Router>
-    </Provider>
-  );
+
+function App() {
+  
+  return (
+  <Provider store={store}>
+    <Router>
+      <div className="App">
+      
+        <Header />
+
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/addProject" element={<AddProject />} />
+          <Route path="/updateProject/:id" element={<UpdateProject />} />
+          <Route path="/projectBoard/:id" element={<ProjectBoard />} />
+          <Route path="/addProjectTask/:id" element={<AddProjectTask />} />
+        </Routes>
+      </div>
+    </Router>
+  </Provider>
+  )
 }
 
 export default App;
