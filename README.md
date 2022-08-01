@@ -1,8 +1,8 @@
 # About The Project
 <p>
   This is a Spring Boot and ReactJs project which allows the user to manage projects. 
+  ![Project Management System](https://user-images.githubusercontent.com/69888214/182136583-4b95f77f-3c8b-4a9f-9f6e-8165b7d26cfa.png)
 </p>
-![Project Management System](https://user-images.githubusercontent.com/69888214/182134889-d8af5403-dc15-43a1-884d-1b1f3a1c63a5.png)
 
 # Tech Stack
 
@@ -22,6 +22,7 @@
 3. Spring Security JSON Web Tokens (JWT) for Authentication.
 
 # Prerequites to Run the Application
+
 
 ### Install NodeJS
 
