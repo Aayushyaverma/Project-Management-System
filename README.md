@@ -1,7 +1,8 @@
 # About The Project
+![Project Management System](https://user-images.githubusercontent.com/69888214/182136682-d528341f-e17e-4fd9-93bd-c9c015e562ad.png)
+
 <p>
   This is a Spring Boot and ReactJs project which allows the user to manage projects. 
-  ![Project Management System](https://user-images.githubusercontent.com/69888214/182136583-4b95f77f-3c8b-4a9f-9f6e-8165b7d26cfa.png)
 </p>
 
 # Tech Stack
