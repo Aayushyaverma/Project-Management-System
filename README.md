@@ -1,5 +1,5 @@
 # About The Project
-![Project Management System](https://user-images.githubusercontent.com/69888214/182134889-d8af5403-dc15-43a1-884d-1b1f3a1c63a5.png |width= 100)
+![Project Management System](https://user-images.githubusercontent.com/69888214/182134889-d8af5403-dc15-43a1-884d-1b1f3a1c63a5.png)
 <p align="center">
   This is a Spring Boot and ReactJs project which allows the user to manage projects. 
 </p>
