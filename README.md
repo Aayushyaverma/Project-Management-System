@@ -25,19 +25,19 @@
 
 ### Install NodeJS
 
-Refer (https://nodejs.org/en/) to install NodeJS
+Refer https://nodejs.org/en/ to install NodeJS
 
 ### Install create-react-app
 
 Install create-react-app npm package globally. This will help to easily run the project and also build the source files easily. Use the following command to install create-react-app: 
 
-*npm install -g create-react-app*
+*npm install create-react-app*
 
-### Install maven
+### Install Maven
 
 Install Maven and Ensure IDE is pointing to Right Maven folder
 
 Also ensure Maven is set as a path variable so that Maven commands can run easily.
 
-Refer (https://maven.apache.org/) for Maven installation.
+Refer https://maven.apache.org/ for Maven installation.
 
