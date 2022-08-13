@@ -35,5 +35,12 @@ Install create-react-app npm package globally. This will help to easily run the 
 
 *npm install create-react-app*
 
+### Install Maven
+
+Install Maven and Ensure IDE is pointing to Right Maven folder
+
+Also ensure Maven is set as a path variable so that Maven commands can run easily.
+
+Refer https://maven.apache.org/ for Maven installation.
 
 
