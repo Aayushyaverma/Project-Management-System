@@ -14,6 +14,7 @@ public class PmsystemApplication {
 	}
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(PmsystemApplication.class, args);
 	}
 
